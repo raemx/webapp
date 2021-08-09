@@ -839,7 +839,7 @@
   width: 3.33em;
   line-height: 3.33em;
   font-size: 0.3em;
-  color: #307bbb;
+  color: #00cc00;
 }
 .c100:hover:after {
   top: 0.04em;
@@ -862,6 +862,7 @@
 }
 .c100.dark:hover > span {
   color: #c6ff00;
+
 }
 .c100.green .bar, .c100.green .fill {
   border-color: #4db53c !important;
@@ -874,6 +875,7 @@
 }
 .c100.green.dark:hover > span {
   color: #5fd400;
+
 }
 .c100.orange .bar, .c100.orange .fill {
   border-color: #dd9d22 !important;
@@ -886,6 +888,19 @@
 }
 .c100.orange.dark:hover > span {
   color: #e08833;
+}
+
+.c100.red .bar, .c100.red .fill {
+  border-color: #ff1100 !important;
+}
+.c100.red:hover > span {
+  color: #ff1100;
+}
+.c100.red.dark .bar, .c100.red.dark .fill {
+  border-color: #a60000 !important;
+}
+.c100.red.dark:hover > span {
+  color: #a60000;
 }
 	@import url('https://fonts.googleapis.com/css?family=SalesforceSans');
 	@import url('https://fonts.googleapis.com/css?family=Poppins');
@@ -1016,12 +1031,13 @@ table{
 }
 */
 
-
-
 .question{
   padding-right: 60px;
 }
 
+h1{
+    font-family: 'Salesforce Sans';
+}
 </style>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1086,12 +1102,20 @@ table{
   </td>
 
 <!-- PIE CHART -->
-<td rowspan="12" width="400" height="table" style="text-align: center; vertical-align: middle;">&nbsp;
 
+<td rowspan="12" width="400" height="table" style="text-align: center; vertical-align: middle;">&nbsp;
+<div id="info">
+      <h3>Impact Scores</h3>
+      <h4 style='color: red;'>LOW: 0 - 1.5</h4>
+      <h4 style='color: orange;'>MEDIUM: 1.5 - 3</h4>
+      <h4 style='color: green;'>HIGH: 3 <</h4>
+    </div>
+  <br><br>
   <div id="pie_chart"></div>
 <br>
 <br>
 	<div id="impact" style='font-size: 20px;'></div>
+   
   </td>
 
 </tr>
@@ -1520,35 +1544,45 @@ if (isNaN(percentage)) { /* if result1 has no value*/
         }
 
 
-if(percentage > 75) {
-color="green";
-} else if (50 < percentage < 75) {
-color="orange";
-}
-else{
-  color="red";
-}
 
+// if (percentage < 37.5){
+//   var color="red";
+//   var info="Low";
+//   var link = 'https://www.bing.com';
+// } else if ( 37.5 <= percentage <= 75 ) {
+//   var color="orange";
+//   var info="Medium";
+//   var link = 'https://www.google.com';
+// } else if (percentage > 75){
+//   var color="green";
+//   var info="High";
+//   var link = 'https://www.yahoo.com';
+// } 
+
+if (percentage < 37.5) {
+  color = "red";
+  info = "Low";
+  link = "https://www.bing.com";
+} else if (percentage < 75) {
+  color = "orange";
+  info = "Medium";
+  link = "https://www.google.com";
+} else {
+  color = "green";
+  info = "High";
+  link = "https://www.yahoo.com";
+}
 
 
 if (output_to_q1 != 0 && output_to_q2 != 0 && output_to_q3 != 0 && output_to_q4 != 0 && output_to_q5 != 0 && output_to_q6 != 0){
-	if(0<total_weighted<1.5){
-		link = 'https://www.google.com'
-	}
-	else if(1.5<total_weighted<3){
-		link = 'https://www.google.com'
-	}
-	else{
-		link = 'https://www.google.com'
-	}
-	document.getElementById("impact").innerHTML = "<br><br><br><br><br><br><br>You completed the questionnaire. Your project had an impact score of: " +total_weighted+ ".<a href='"+link+"'><br>Click here to find out more information</a></div>"
+	document.getElementById("impact").innerHTML = "<br><br><br><br><br><br><br>You completed the questionnaire. Your project had an impact score of: <h3 style='color: "+color+";'>"+info+": "+total_weighted+ ".</h3><a href='"+link+"' target='_blank'><br>Click here to find out more information about your score.</a></div>"
 }
 else{
-	document.getElementById("impact").innerHTML = "<br><br><br><br><br><br><br>In order to calculate your impact score, you still have "+remain+" questions remaining."
+	document.getElementById("impact").innerHTML = "<br><br><br><br><br><br><br>In order to calculate your impact score, you still have <h4>"+remain+"</h4> questions remaining."
 }
 
 
-document.getElementById("pie_chart").innerHTML = "<div class='c100 p"+percentage+"small green'><span>"+percentage+"%</span><div class='slice'><div class='bar'></div><div class='fill'></div></div></div>";
+document.getElementById("pie_chart").innerHTML = "<div class='c100 p"+percentage+" "+color+"'><span>"+percentage+"%</span><div class='slice'><div class='bar'></div><div class='fill'></div></div></div>";
 
 }
 //
