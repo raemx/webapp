@@ -54,7 +54,6 @@
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   border-radius: 50%;
-  float: left;
   margin: 0 0.1em 0.1em 0;
   background-color: #cccccc;
 }
@@ -890,6 +889,7 @@
   color: #e08833;
 }
 
+/*Added another colour for the pie chart so wouldn't defult to blue */
 .c100.red .bar, .c100.red .fill {
   border-color: #ff1100 !important;
 }
@@ -934,6 +934,22 @@ body {
     padding: 25px 30px;
     border-radius: 5px;
   }
+
+/*  table {
+    border-collapse:separate;
+    border:solid black 1px;
+    border-radius:6px;
+    -moz-border-radius:6px;
+}
+
+td {
+    border-left:solid black 1px;
+    border-top:solid black 1px;
+}
+
+td:first-child{
+     border-left: none;
+}*/
 
 article {
   position: relative;
@@ -993,8 +1009,9 @@ header{
   text-decoration: underline;
 }
 
-td{
-border-bottom: 1px dotted grey;
+td {
+border-bottom: 2px dotted grey;
+  border-collapse: collapse;
 }
 
 .boxes{
@@ -1035,9 +1052,7 @@ table{
   padding-right: 60px;
 }
 
-h1{
-    font-family: 'Salesforce Sans';
-}
+
 </style>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1104,17 +1119,17 @@ h1{
 <!-- PIE CHART -->
 
 <td rowspan="12" width="400" height="table" style="text-align: center; vertical-align: middle;">&nbsp;
-<div id="info">
+  <div id="impact" style='font-size: 20px;'></div>
+  <br><br>
+  <div id="pie_chart"></div>
+<br>
+<br>
+	<div id="info">
       <h3>Impact Scores</h3>
       <h4 style='color: red;'>LOW: 0 - 1.5</h4>
       <h4 style='color: orange;'>MEDIUM: 1.5 - 3</h4>
       <h4 style='color: green;'>HIGH: 3 <</h4>
     </div>
-  <br><br>
-  <div id="pie_chart"></div>
-<br>
-<br>
-	<div id="impact" style='font-size: 20px;'></div>
    
   </td>
 
@@ -1272,7 +1287,7 @@ h1{
 
 
 	<tr>
-		<td   class="question" width="400"><label for="q5">5. For those indirectly impacted what type of change will this bring? </label></td>
+		<td class="question" width="400"><label for="q5">5. For those indirectly impacted what type of change will this bring? </label></td>
 
 
 		<td class="boxes" >
@@ -1575,14 +1590,14 @@ if (percentage < 37.5) {
 
 
 if (output_to_q1 != 0 && output_to_q2 != 0 && output_to_q3 != 0 && output_to_q4 != 0 && output_to_q5 != 0 && output_to_q6 != 0){
-	document.getElementById("impact").innerHTML = "<br><br><br><br><br><br><br>You completed the questionnaire. Your project had an impact score of: <h3 style='color: "+color+";'>"+info+": "+total_weighted+ ".</h3><a href='"+link+"' target='_blank'><br>Click here to find out more information about your score.</a></div>"
+	document.getElementById("impact").innerHTML = "<br><br>You completed the questionnaire. Your project had an impact score of: <h3 style='color: "+color+";'>"+info+": "+total_weighted+ ".</h3><a href='"+link+"' target='_blank'><br>Click here to find out more information about your score.</a></div>"
 }
 else{
-	document.getElementById("impact").innerHTML = "<br><br><br><br><br><br><br>In order to calculate your impact score, you still have <h4>"+remain+"</h4> questions remaining."
+	document.getElementById("impact").innerHTML = "<br><br>In order to calculate your impact score, you still have <h4>"+remain+"</h4> questions remaining."
 }
 
 
-document.getElementById("pie_chart").innerHTML = "<div class='c100 p"+percentage+" "+color+"'><span>"+percentage+"%</span><div class='slice'><div class='bar'></div><div class='fill'></div></div></div>";
+document.getElementById("pie_chart").innerHTML = "<center><div class='c100 p"+percentage+" big "+color+"'><span>"+percentage+"%</span><div class='slice'><div class='bar'></div><div class='fill'></div></div></div></center>";
 
 }
 //
