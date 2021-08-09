@@ -1,5 +1,6 @@
-Web App Calculator Tool for Project Impact Measurement
+Web App Calculator Tool for Project Impact Measurement for Salesforce/Mulesoft.
 
+Side Note: CSS, JavaScript and HTML in one document because of implementation is in Google Sites for Company Website.
 
 What it Does
 - It's a questionnaire with 6 questions that have four options ranging marks from 1 to 4 which affect the score the user a receives at the end.
