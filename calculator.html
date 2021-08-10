@@ -1012,6 +1012,7 @@ header{
 td {
 border-bottom: 2px dotted grey;
   border-collapse: collapse;
+  width: 50%;
 }
 
 .boxes{
@@ -1052,6 +1053,14 @@ table{
   padding-right: 60px;
 }
 
+@media screen and (max-width:100%) {
+    table tr > *{
+        display: block;
+    }
+    table . {
+        display: table-cell;
+    }
+}
 
 </style>
 
@@ -1115,28 +1124,7 @@ table{
   </article>
 
   </td>
-
-<!-- PIE CHART -->
-
-<td rowspan="12" width="400" height="table" style="text-align: center; vertical-align: middle;">&nbsp;
-  <div id="impact" style='font-size: 20px;'></div>
-  <br><br>
-  <div id="pie_chart"></div>
-<br>
-<br>
-	<div id="info">
-      <h3>Impact Scores</h3>
-      <h4 style='color: red;'>LOW: 0 - 1.5</h4>
-      <h4 style='color: orange;'>MEDIUM: 1.5 - 3</h4>
-      <h4 style='color: green;'>HIGH: 3 <</h4>
-    </div>
-   
-  </td>
-
 </tr>
-
-
-<tr>
 
 
 	<tr>
@@ -1384,6 +1372,23 @@ table{
 
 </tr>
 
+<tr>
+  <td height="table" style="text-align: center; vertical-align: middle;">&nbsp;
+
+     <div id="impact" style='font-size: 20px;'></div> 
+
+  <div id="info">
+      <h3>Impact Scores</h3>
+      <h4 style='color: red;'>LOW: 0 - 1.5 / 0 - 37.5 %</h4>
+      <h4 style='color: orange;'>MEDIUM: 1.5 - 3 / 37.5 - 75 %</h4>
+      <h4 style='color: green;'>HIGH: 3 - 4 / OVER 75 %</h4>
+    </div>
+
+
+  </td>
+
+</tr>
+
 </table>
 
 <!-- <span></span>
@@ -1428,8 +1433,6 @@ table{
     <span class="mdl-chip__text"><div id="weighted_score">Weighted Score:</div></span>
 </span> -->
 
-
- <div id="timedate_display"></div>
 
 
 <script>
@@ -1540,24 +1543,26 @@ if (isNaN(output_to_q6)) { /* if result1 has no value*/
 				}
 
 					var remain = 6 - document.querySelectorAll('input[type="radio"]:checked').length;
+          /*In order to find the remaining number of questions this minuses the total amount of questions by the amount of boxes checked by the user*/
 
            // document.getElementById("total_score").innerHTML
            //              = "Total Score: " + (+output_to_q1 + +output_to_q2 + +output_to_q3 + +output_to_q4 + +output_to_q5 + +output_to_q6);
 
             var total = +0.15*output_to_q1 + +0.05*output_to_q2 + +0.20*output_to_q3 + +0.20*output_to_q4 + +0.20*output_to_q5 + +0.20*output_to_q6;
 
-            var total_weighted = + +Math.round(total*100)/100;
+            var total_weighted = + +Math.round(total*100)/100;/*finds the overall weighted score*/
+
+
             // document.getElementById("weighted_score").innerHTML = "Total Weighted Score: " +Math.round(total*100)/100;
             /* math.round used as the numbers have multiple decimal points */
 
-var percentage = Math.round((total_weighted/4)*100)
+var percentage = Math.round((total_weighted/4)*100) /*finds the weighted score as a percentage of the current total dependant on the amount of questions the user has answered*/
 
 if (isNaN(percentage)) { /* if result1 has no value*/
   percentage = "0"; /*set it to 0*/
         } else {
   percentage = percentage; /* or just assign it's value to itself*/
         }
-
 
 
 // if (percentage < 37.5){
@@ -1588,16 +1593,16 @@ if (percentage < 37.5) {
   link = "https://www.yahoo.com";
 }
 
-
 if (output_to_q1 != 0 && output_to_q2 != 0 && output_to_q3 != 0 && output_to_q4 != 0 && output_to_q5 != 0 && output_to_q6 != 0){
-	document.getElementById("impact").innerHTML = "<br><br>You completed the questionnaire. Your project had an impact score of: <h3 style='color: "+color+";'>"+info+": "+total_weighted+ ".</h3><a href='"+link+"' target='_blank'><br>Click here to find out more information about your score.</a></div>"
+	document.getElementById("impact").innerHTML = "<br><br><div>You completed the questionnaire.</div> <br<br><br><br><div>Your project had an impact score of:</div> <br><br><br><br><div id='pie_chart'></div><h3 style='color: "+color+";'>"+info+" Score: "+total_weighted+ "</h3><a href='"+link+"' target='_blank'>Click here to find out more information about your score.</a></div><br><br><br><br><br>"
+
+  document.getElementById("pie_chart").innerHTML = "<center><div class='c100 p"+percentage+" big "+color+"'><span>"+percentage+"%</span><div class='slice'><div class='bar'></div><div class='fill'></div></div></div></center>";
 }
 else{
-	document.getElementById("impact").innerHTML = "<br><br>In order to calculate your impact score, you still have <h4>"+remain+"</h4> questions remaining."
+	document.getElementById("impact").innerHTML = "<br><br>In order to calculate your impact score, you still have <h3 style='font-weight: bold; color:"+color+";'>"+remain+"</h3> questions remaining.<br><br><br><br><br><br><div id='pie_chart'></div><br><br><br>"
+
+  document.getElementById("pie_chart").innerHTML = "<center><div class='c100 p"+percentage+" big "+color+"'><span>"+percentage+"%</span><div class='slice'><div class='bar'></div><div class='fill'></div></div></div></center>";
 }
-
-
-document.getElementById("pie_chart").innerHTML = "<center><div class='c100 p"+percentage+" big "+color+"'><span>"+percentage+"%</span><div class='slice'><div class='bar'></div><div class='fill'></div></div></div></center>";
 
 }
 //
