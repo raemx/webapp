@@ -12,6 +12,6 @@ What it Does
 Requirements
 
 - Languages: HTML, CSS and Javascript
-- Frameworks: Google Material Sites Lite
+- Frameworks: Google Material Sites Lite, Bootstrap
 
 Link to website:
