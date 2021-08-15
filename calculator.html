@@ -6,6 +6,13 @@
 		<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
 		<style>
 
     /****************************************************************
@@ -1009,10 +1016,9 @@ header{
   text-decoration: underline;
 }
 
-td {
+td{
 border-bottom: 2px dotted grey;
   border-collapse: collapse;
-  width: 50%;
 }
 
 .boxes{
@@ -1053,7 +1059,48 @@ table{
   padding-right: 60px;
 }
 
-@media screen and (max-width:100%) {
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  /*background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */*/
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #aaaaaa;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 10px;
+  border: 1px solid #888;
+  width: 80%;
+  font-family: 'Salesforce Sans';
+}
+
+/* The Close Button */
+.close1, .close2, .close3, .close4, .close5, .close5, .close6{
+  color: #ccc;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: right ;
+}
+
+.close1:hover, .close2:hover, .close3:hover, .close4:hover, .close5:hover, .close6:hover,
+.close1:focus, .close2:focus, .close3:focus, .close4:focus, .close5:focus, .close6:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*When the screen is a smaller size, adjust so that the columns turn into rows*/
+/*@media screen and (max-width:767px) {
     table tr > *{
         display: block;
     }
@@ -1061,7 +1108,7 @@ table{
         display: table-cell;
     }
 }
-
+*/
 </style>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1082,7 +1129,23 @@ table{
 <table width="100%">
 
 	<tr>
-		<td class="question" width="400"><label for="q1">1. How many people will this project impact directly?</label></td>
+		<td class="question" width="400"><label for="q1">1. How many people will this project impact directly?</label>
+      <!-- Trigger/Open The Modal -->
+<button id="myBtn1">Learn More</button>
+
+<!-- The Modal -->
+<div id="q1info" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close1">&times;</span>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+  </div>
+
+</div>
+
+</td>
+
 
 			<td class="boxes" >
 				<article class="feature1">
@@ -1124,13 +1187,41 @@ table{
   </article>
 
   </td>
+
+<td height="table" rowspan="12" style="text-align: center; vertical-align: middle;">&nbsp;
+
+     <div id="impact" style='font-size: 20px;'></div> 
+
+  <div id="info">
+      <h3>Impact Scores</h3>
+      <h4 style='color: red;'>LOW: 0 - 1.5 / 0 - 37.5 %</h4>
+      <h4 style='color: orange;'>MEDIUM: 1.5 - 3 / 37.5 - 75 %</h4>
+      <h4 style='color: green;'>HIGH: 3 - 4 / OVER 75 %</h4>
+    </div>
+
+
+  </td>
+
 </tr>
 
 
 	<tr>
 
 
-		<td class="question" width="400"><label for="q2">2. How many people will this project impact indirectly?</label></td>
+		<td class="question" width="400"><label for="q2">2. How many people will this project impact indirectly?</label>
+          <!-- Trigger/Open The Modal -->
+<button id="myBtn2">Learn More</button>
+
+<!-- The Modal -->
+<div id="q2info" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close2">&times;</span>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+  </div>
+
+</div></td>
 
 		<td class="boxes" >
 			<article class="feature1">
@@ -1176,7 +1267,21 @@ table{
 
 
 	<tr>
-		<td class="question"width="400"><label for="q3">3. Does this project involve other teams/functions outside of Global Customer Support?</label></td>
+		<td class="question"width="400"><label for="q3">3. Does this project involve other teams/functions outside of Global Customer Support?</label>
+            <!-- Trigger/Open The Modal -->
+<button id="myBtn3">Learn More</button>
+
+<!-- The Modal -->
+<div id="q3info" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close3">&times;</span>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+  </div>
+
+</div>
+</td>
 
 			<td class="boxes" >
 		      <article class="feature1">
@@ -1226,7 +1331,20 @@ table{
 
 
 	<tr>
-		<td  class="question" width="400"><label for="q4">4. For those directly impacted what type of change will this bring?</label></td>
+		<td  class="question" width="400"><label for="q4">4. For those directly impacted what type of change will this bring?</label>
+    <!-- Trigger/Open The Modal -->
+<button id="myBtn4">Learn More</button>
+
+<!-- The Modal -->
+<div id="q4info" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close4">&times;</span>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+  </div>
+
+</div></td>
 
 <td class="boxes" >
 			<article class="feature1">
@@ -1275,7 +1393,20 @@ table{
 
 
 	<tr>
-		<td class="question" width="400"><label for="q5">5. For those indirectly impacted what type of change will this bring? </label></td>
+		<td class="question" width="400"><label for="q5">5. For those indirectly impacted what type of change will this bring? </label>
+          <!-- Trigger/Open The Modal -->
+<button id="myBtn5">Learn More</button>
+
+<!-- The Modal -->
+<div id="q5info" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close5">&times;</span>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+  </div>
+
+</div></td>
 
 
 		<td class="boxes" >
@@ -1326,7 +1457,20 @@ table{
 
 
 	<tr>
-		<td  class="question" width="400"><label for="q6">6. What is the anticipated reception of this project and change to does directly/indirectly impacted overall?</label></td>
+		<td  class="question" width="400"><label for="q6">6. What is the anticipated reception of this project and change to does directly/indirectly impacted overall?</label>
+    <!-- Trigger/Open The Modal -->
+<button id="myBtn6">Learn More</button>
+
+<!-- The Modal -->
+<div id="q6info" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close6">&times;</span>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+  </div>
+
+</div></td>
 
 
 			<td class="boxes" >
@@ -1372,22 +1516,6 @@ table{
 
 </tr>
 
-<tr>
-  <td height="table" style="text-align: center; vertical-align: middle;">&nbsp;
-
-     <div id="impact" style='font-size: 20px;'></div> 
-
-  <div id="info">
-      <h3>Impact Scores</h3>
-      <h4 style='color: red;'>LOW: 0 - 1.5 / 0 - 37.5 %</h4>
-      <h4 style='color: orange;'>MEDIUM: 1.5 - 3 / 37.5 - 75 %</h4>
-      <h4 style='color: green;'>HIGH: 3 - 4 / OVER 75 %</h4>
-    </div>
-
-
-  </td>
-
-</tr>
 
 </table>
 
@@ -1593,30 +1721,106 @@ if (percentage < 37.5) {
   link = "https://www.yahoo.com";
 }
 
-if (output_to_q1 != 0 && output_to_q2 != 0 && output_to_q3 != 0 && output_to_q4 != 0 && output_to_q5 != 0 && output_to_q6 != 0){
-	document.getElementById("impact").innerHTML = "<br><br><div>You completed the questionnaire.</div> <br<br><br><br><div>Your project had an impact score of:</div> <br><br><br><br><div id='pie_chart'></div><h3 style='color: "+color+";'>"+info+" Score: "+total_weighted+ "</h3><a href='"+link+"' target='_blank'>Click here to find out more information about your score.</a></div><br><br><br><br><br>"
+/*Adjusts the color of the percentage in the pie chart, the word for how the score is, and the type of link when the score is presented*/
+
+if (output_to_q1 != 0 && output_to_q2 != 0 && output_to_q3 != 0 && output_to_q4 != 0 && output_to_q5 != 0 && output_to_q6 != 0){ 
+  /*If the outputs are all not equal to 0 - meaning theyre all checked then*/
+	document.getElementById("impact").innerHTML = "<br><br><div>You completed the questionnaire.</div> <br<br><br><br><div>Your project had an impact score of:</div> <br><br><div id='pie_chart'></div><h3 style='color: "+color+";'>"+info+" Score: "+total_weighted+ "</h3><a href='"+link+"' target='_blank'>Click here to find out more information about your score.</a></div><br><br><br><br><br>"
+  /*display the pie chart, score and link*/
 
   document.getElementById("pie_chart").innerHTML = "<center><div class='c100 p"+percentage+" big "+color+"'><span>"+percentage+"%</span><div class='slice'><div class='bar'></div><div class='fill'></div></div></div></center>";
 }
 else{
 	document.getElementById("impact").innerHTML = "<br><br>In order to calculate your impact score, you still have <h3 style='font-weight: bold; color:"+color+";'>"+remain+"</h3> questions remaining.<br><br><br><br><br><br><div id='pie_chart'></div><br><br><br>"
+  /*if any questions are unchecked then display to user that they still have questions left */
 
+
+  /*uses the variables to accurately display the right colours and numbers for the score*/
   document.getElementById("pie_chart").innerHTML = "<center><div class='c100 p"+percentage+" big "+color+"'><span>"+percentage+"%</span><div class='slice'><div class='bar'></div><div class='fill'></div></div></div></center>";
-}
 
 }
-//
-// var today = new Date();
-// var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-// var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-// var dateTime = date+' '+time;
-//
-// if(today.getSeconds() % 2 == 0) {
-// color="red";
-// } else {
-// color="green";
-// }
-// document.getElementById("timedate_display").innerHTML = "<table style='background-color:"+color+";'><tr><td>"+dateTime+"</td></tr></table>";
+}
+
+//wish i had more time to figure out a smarter/faster way to do this!!!
+
+// Get the modal
+var modal1 = document.getElementById("q1info");
+var modal2 = document.getElementById("q2info");
+var modal3 = document.getElementById("q3info");
+var modal4 = document.getElementById("q4info");
+var modal5 = document.getElementById("q5info");
+var modal6 = document.getElementById("q6info");
+
+// Get the button that opens the modal
+var btn1 = document.getElementById("myBtn1");
+var btn2 = document.getElementById("myBtn2");
+var btn3 = document.getElementById("myBtn3");
+var btn4 = document.getElementById("myBtn4");
+var btn5 = document.getElementById("myBtn5");
+var btn6 = document.getElementById("myBtn6");
+
+// Get the <span> element that closes the modal
+var span1 = document.getElementsByClassName("close1")[0];
+var span2 = document.getElementsByClassName("close2")[0];
+var span3 = document.getElementsByClassName("close3")[0];
+var span4 = document.getElementsByClassName("close4")[0];
+var span5 = document.getElementsByClassName("close5")[0];
+var span6 = document.getElementsByClassName("close6")[0];
+
+// When the user clicks on the button, open the modal
+btn1.onclick = function() {
+  modal1.style.display = "block";
+}
+btn2.onclick = function() {
+  modal2.style.display = "block";
+}
+btn3.onclick = function() {
+  modal3.style.display = "block";
+}
+btn4.onclick = function() {
+  modal4.style.display = "block";
+}
+btn5.onclick = function() {
+  modal5.style.display = "block";
+}
+btn6.onclick = function() {
+  modal6.style.display = "block";
+}
+
+
+// When the user clicks on <span> (x), close the modal
+span1.onclick = function() {
+  modal1.style.display = "none";
+}
+span2.onclick = function() {
+  modal2.style.display = "none";
+}
+span3.onclick = function() {
+  modal3.style.display = "none";
+}
+span4.onclick = function() {
+  modal4.style.display = "none";
+}
+span5.onclick = function() {
+  modal5.style.display = "none";
+}
+span6.onclick = function() {
+  modal6.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal|modal1|modal2|modal3|modal4|modal5|modal6) {
+     modal1.style.display = "none";
+      modal2.style.display = "none";
+      modal3.style.display = "none";
+      modal4.style.display = "none";
+      modal5.style.display = "none";
+      modal6.style.display = "none";
+
+  }
+}
+
 
 
 		</script>
